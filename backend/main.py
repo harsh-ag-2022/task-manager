@@ -118,6 +118,11 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     if not db_task:
         raise HTTPException(status_code=404, detail="Task not found")
         
+    # Cascade unblock dependent tasks
+    dependent_tasks = db.query(TaskDB).filter(TaskDB.blocked_by == task_id).all()
+    for dt in dependent_tasks:
+        dt.blocked_by = None
+        
     db.delete(db_task)
     db.commit()
     return {"message": "Task deleted successfully"}
