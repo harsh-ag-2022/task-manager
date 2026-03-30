@@ -38,8 +38,7 @@ A functional, full-stack Task Management application built for the Flodo AI take
 4. Run the app: `flutter run`
 
 ## 🎥 1-Minute Demo Video
-[Insert Google Drive Link Here]
-*(Ensure view access is granted to nilay@flodo.ai)*
+https://drive.google.com/file/d/1ibHBit4TvAzYAbyKLMhd9BF5NM-H6wW6/view?usp=sharing
 
 ## 🤖 AI Usage Report
 As encouraged, AI tools were utilized to accelerate development and refine state management architecture.
@@ -48,6 +47,7 @@ As encouraged, AI tools were utilized to accelerate development and refine state
   * "Generate SQLAlchemy models and FastAPI routes based on this JSON structure..."
   * "Implement a 300ms debounced search in Flutter using Riverpod..."
   * "Create a Kanban board style UI for the task, ensuring that all the task functionality is preserved (especially task blocking). The user should be able to slide their task card around to different sections..."
+  * "One critical issue: if a task A is blocked by task B, and I delete task B, then there is no way to alter task A... add functionality to update the status of task A if the task that it is blocked by is deleted."
 * **Hallucinations/Fixes:** 
   * *Example 1:* The AI initially suggested storing the 'Blocked By' field as a nested object rather than a foreign key integer. I corrected this by explicitly prompting it to use a standard SQL relationship mapping in the FastAPI setup.
   * *Example 2:* The API filtering caused dependent tasks to lose context of their blockers if a filter was active. We fixed this by restructuring the Riverpod architecture to use a unified `allTasks` sync strategy, completely decoupling manual visual filters from the dependency resolution.
